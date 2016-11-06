@@ -45,7 +45,7 @@ namespace Abilities.ConcreteEntities
         public string Status => "Health::" + this.Health + " Resource::" + this.Resource + " ";
 
         /// <summary>
-        /// TODO The add.
+        /// add an ability to this Entities ability set
         /// </summary>
         /// <param name="name">
         /// The name.
@@ -116,15 +116,16 @@ namespace Abilities.ConcreteEntities
             // it is a default ability
             var damager = this.Abilities[name] as IDamager;
             var buffer = this.Abilities[name] as IBuffer;
-            if (damager == null)
+            
+            if (damager == null || buffer == null)
             {
                 this.Abilities[name].Execute();
                 return;
             }
 
             damager.Target = target;
-            var canCast = (this.Resource - damager.Cost) > 0;
-
+            var canCast = (this.Resource - damager.Cost) > -1;
+            Console.WriteLine("{0} ... {1} : {2} \n", canCast, this.Resource, damager.Cost);
             if (!canCast)
             {
                 return;
@@ -132,7 +133,6 @@ namespace Abilities.ConcreteEntities
 
             this.Abilities[name].Execute();
             this.Resource -= damager.Cost;
-
 
             // Console.WriteLine(":{0}:==After== Status {1} \n", this.Name, this.Status);
         }
@@ -150,7 +150,7 @@ namespace Abilities.ConcreteEntities
             // Console.WriteLine(":{0}:==Before== Status {1} \n", this.Name, this.Status);
             this.Health -= damager.Amount;
 
-            Console.WriteLine(":{0}:Status {1} \n", this.Name, this.Status);
+            // Console.WriteLine(":{0}:Status {1} \n", this.Name, this.Status);
         }
     }
 }

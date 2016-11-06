@@ -6,7 +6,6 @@
 //   The Cure Ability.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace Abilities.ConcreteAbilities
 {
     using System;
@@ -19,16 +18,16 @@ namespace Abilities.ConcreteAbilities
         /// <summary>
         /// Initializes a new instance of the <see cref="Cura"/> class.
         /// </summary>
-        /// <param name="value">
-        /// The value.
-        /// </param>
         /// <param name="cost">
         /// TODO The cost.
         /// </param>
-        public Cura(int value, int cost)
+        /// <param name="amount">
+        /// The amount.
+        /// </param>
+        public Cura(int cost, int amount)
         {
-            this.Amount = -value;
             this.Cost = cost;
+            this.Amount = -amount;
         }
 
         /// <summary>

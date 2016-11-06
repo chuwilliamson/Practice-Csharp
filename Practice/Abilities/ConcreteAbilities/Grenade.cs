@@ -22,13 +22,13 @@ namespace Abilities.ConcreteAbilities
         /// <param name="cost">
         /// The cost.
         /// </param>
-        /// <param name="damage">
-        /// The damage.
+        /// <param name="amount">
+        /// The amount.
         /// </param>
-        public Grenade(int cost, int damage)
+        public Grenade(int cost, int amount)
         {
             this.Cost = cost;
-            this.Amount = damage;
+            this.Amount = amount;
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Abilities.ConcreteAbilities
         public int Cost { get; set; }
 
         /// <summary>
-        /// Gets or sets the damage.
+        /// Gets or sets the amount.
         /// </summary>
         public int Amount { get; set; }
 
@@ -75,10 +75,10 @@ namespace Abilities.ConcreteAbilities
         }
 
         /// <summary>
-        /// Apply damage to a damageable object
+        /// Apply amount to a damageable object
         /// </summary>
         /// <param name="damageable">
-        /// The damageable taking the damage.
+        /// The damageable taking the amount.
         /// </param>
         public void DoDamage(IDamageable damageable)
         {
