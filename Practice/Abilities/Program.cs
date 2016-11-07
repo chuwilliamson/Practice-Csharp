@@ -26,8 +26,10 @@ namespace Abilities
         {
             var guy = new Cactuar("Cactus guy", 125, 25);
             var girl = new Cactuar("Cactus girl", 80, 100);
+
             Console.WriteLine("Guy Status: " + guy.Status);
             Console.WriteLine("Girl Status: " + girl.Status);
+
             for (var input = Console.ReadLine(); !string.Equals(input, "q"); input = Console.ReadLine())
             {
                 Console.Clear();
@@ -38,20 +40,20 @@ namespace Abilities
                 switch (input)
                 {
                     case "w":
-                        girl.Add(input, new ThousandNeedles(new Grenade(25, 28)));
-                        girl.Cast(input, guy);
+                        girl.Add("ThousandNeedles", new ThousandNeedles(25, 28));
+                        girl.Cast("ThousandNeedles", guy);
                         break;
                     case "a":
-                        girl.Add(input, new ThousandNeedles(25, 5));
-                        girl.Cast(input, guy);
+                        girl.Add("Grenade", new Grenade(5, 25));
+                        girl.Cast("Grenade", guy);
                         break;
                     case "s":
-                        guy.Add(input, new Grenade(25, 28));
-                        guy.Cast(input, guy);
+                        guy.Add("GuyGrenade", new Grenade(5, 15));
+                        guy.Cast("GuyGrenade", guy);
                         break;
                     case "d":
-                        guy.Add(input, new Cura(5, 5));
-                        guy.Cast(input, guy);
+                        guy.Add("Cure", new Cura(5, 5));
+                        guy.Cast("Cure", guy);
                         break;
                     default:
                         Console.WriteLine("NO...");

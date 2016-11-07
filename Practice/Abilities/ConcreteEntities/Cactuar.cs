@@ -33,10 +33,10 @@ namespace Abilities.ConcreteEntities
         public Cactuar(string name, int health, int resource)
             : base(name, health, resource)
         {
-            this.Abilities.Add("vanish", new Vanish());
-            this.Abilities.Add("needle", new ThousandNeedles(1000, 1000));
-            this.Abilities.Add("grenade", new Grenade(5, 25));
-            this.Abilities.Add("heal", new Cura(100, 19));
+            this.Add("vanish", new Vanish());
+            this.Add("needle", new ThousandNeedles(1000, 1000));
+            this.Add("grenade", new Grenade(5, 25));
+            this.Add("heal", new Cura(100, 19));
         }
 
         /// <summary>
@@ -78,18 +78,7 @@ namespace Abilities.ConcreteEntities
         {
             this.Cast(name, null);
         }
-
-        /// <summary>
-        /// TODO The to string.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="string"/>.
-        /// </returns>
-        public override string ToString()
-        {
-            return this.Name + " the Cactuar";
-        }
-
+        
         /// <summary>
         /// The cast.
         /// </summary>
@@ -105,40 +94,51 @@ namespace Abilities.ConcreteEntities
         public void Cast(string name, IDamageable target)
         {
             Console.WriteLine("{0} is attempting to cast {1}... \n", this.Name, name);
-            if (!this.Abilities.ContainsKey(name))
+            var ability = this.Abilities[name];
+            if (ability == null)
             {
                 throw new NotImplementedException();
             }
 
-            // Console.WriteLine(":{0}:==Before== Status {1} \n", this.Name, this.Status);
-
             // cast the ability as a damager if it's null then 
             // it is a default ability
-            var damager = this.Abilities[name] as IDamager;
-            var buffer = this.Abilities[name] as IBuffer;
-            
-            if (damager == null || buffer == null)
+            var damager = ability as IDamager;
+
+            // is this a non-damaging/default Ability?
+            if (damager == null)
             {
-                this.Abilities[name].Execute();
+                ability.Execute();
                 return;
             }
 
             damager.Target = target;
+
             var canCast = (this.Resource - damager.Cost) > -1;
             Console.WriteLine("{0} ... {1} : {2} \n", canCast, this.Resource, damager.Cost);
+
+            // Is there enough resource associated with this ability
             if (!canCast)
             {
                 return;
             }
 
-            this.Abilities[name].Execute();
+            ability.Execute();
             this.Resource -= damager.Cost;
-
-            // Console.WriteLine(":{0}:==After== Status {1} \n", this.Name, this.Status);
         }
 
         /// <summary>
-        /// The take damage.
+        /// TODO The to string.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="string"/>.
+        /// </returns>
+        public override string ToString()
+        {
+            return this.Name + " the Cactuar";
+        }
+
+        /// <summary>
+        /// Take damage from a specific damager interface.
         /// </summary>
         /// <param name="damager">
         /// The damager.

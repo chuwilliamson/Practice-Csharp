@@ -9,6 +9,8 @@
 
 namespace Abilities
 {
+    using System.Diagnostics.CodeAnalysis;
+
     /// <summary>
     /// TODO The Buffer interface.
     /// </summary>
@@ -23,5 +25,14 @@ namespace Abilities
         /// Gets or sets the target.
         /// </summary>
         IDamageable Target { get; set; }
+
+        /// <summary>
+        /// TODO The apply buff.
+        /// </summary>
+        /// <param name="buffable">
+        /// TODO The buffable.
+        /// </param>
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
+        void ApplyBuff(IBuffable buffable);
     }
 }

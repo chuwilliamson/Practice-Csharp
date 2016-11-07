@@ -71,7 +71,7 @@ namespace Abilities.ConcreteAbilities
         }
 
         /// <summary>
-        /// The execute.
+        /// Execute this ability from the IAbility interface
         /// </summary>
         public void Execute()
         {
