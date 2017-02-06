@@ -65,6 +65,3 @@ namespace Combat.Utilities
         Dictionary<string, Transition> transitions;
     }
 }
-
-
- var anvp = {}; anvp.p0 = {};anvp.p0.config = {"hashPrefix":"kjc15swt6h6nv","hashBaseUrl":"","referrerURL":"https://www.facebook.com/","parentPageURL":"http://klfy.com/2017/01/25/11th-annual-gumbo-cook-off-in-opelousas-to-benefit-toddler-with-medical-needs/","parentTitle":"11th Annual Gumbo Cook-off in Opelousas to benefit toddler with medical needs | KLFY","baseURL":"http://up.anv.bz/latest/kjc15swt6h6nv/","shareLink":"http://klfy.com/2017/01/25/11th-annual-gumbo-cook-off-in-opelousas-to-benefit-toddler-with-medical-needs/"};

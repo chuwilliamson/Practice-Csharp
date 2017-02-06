@@ -53,14 +53,6 @@ namespace Abilities
         /// <summary>
         /// Gets or sets the abilities.
         /// </summary>
-        protected Dictionary<string, IAbility> Abilities { get; set; } = new Dictionary<string, IAbility>();
-
-        /// <summary>
-        /// The cast.
-        /// </summary>
-        /// <param name="name">
-        /// The name.
-        /// </param>
-        public abstract void Cast(string name);
+        protected Dictionary<string, IAbility> Abilities { get; set; } = new Dictionary<string, IAbility>();    
     }
 }

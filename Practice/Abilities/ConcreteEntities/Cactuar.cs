@@ -16,7 +16,7 @@ namespace Abilities.ConcreteEntities
     /// <summary>
     /// The Cactus man.
     /// </summary>
-    public class Cactuar : Entity, IDamageable
+    public class Cactuar : Entity, IDamageable, ICaster
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Cactuar"/> class.
@@ -74,7 +74,7 @@ namespace Abilities.ConcreteEntities
         /// <param name="name">
         /// The name.
         /// </param>
-        public override void Cast(string name)
+        public void Cast(string name)
         {
             this.Cast(name, null);
         }
