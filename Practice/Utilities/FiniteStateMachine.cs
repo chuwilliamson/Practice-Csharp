@@ -1,8 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Combat.Utilities
+﻿ 
+namespace Utilities
 {
+    using System;
+    using System.Collections.Generic;
+
+
     delegate void Handler();
     class State
     {
@@ -25,7 +27,7 @@ namespace Combat.Utilities
         {
             from = a;
             to = b;
-            name = a.ToString() + "->" + b.ToString(); 
+            name = a.ToString() + "->" + b.ToString();
         }
         public override string ToString()
         {
@@ -49,19 +51,20 @@ namespace Combat.Utilities
             }
         }
         public void AddTransition(T a, T b)
-        {            
+        {
             var s1 = (a as Enum).ToString();
             var s2 = (b as Enum).ToString();
-            Transition t = new Transition(states[s1],states[s2]);
-            transitions.Add(t.ToString(), t);  
+            Transition t = new Transition(states[s1], states[s2]);
+            transitions.Add(t.ToString(), t);
         }
 
-        
+
         public void Start(T a)
         {
-         
+
         }
         Dictionary<string, State> states;
         Dictionary<string, Transition> transitions;
     }
+
 }
