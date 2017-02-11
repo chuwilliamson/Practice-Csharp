@@ -2,6 +2,15 @@
 using System.Xml.Serialization;
 namespace Dialogue
 {
+    [XmlRoot(ElementName = "DialogueTree")]
+    public class DialogueTree
+    {
+        [XmlElement(ElementName = "DialogueRoot")]
+        public List<DialogueRoot> DialogueRoots {
+            get;
+            set;
+        }
+    }
     [XmlRoot(ElementName = "DialogueRoot")]
     public class DialogueRoot
     {
@@ -9,9 +18,9 @@ namespace Dialogue
         {
             DialogueNodes = new List<DialogueNode>();
         }
-        public DialogueRoot(List<DialogueNode> dns)
+        public DialogueRoot(List<DialogueNode> dialogueNodes)
         {
-            DialogueNodes = dns;
+            DialogueNodes = dialogueNodes;
         }
         [XmlElement(ElementName = "DialogueNode")]
         public List<DialogueNode> DialogueNodes {
@@ -20,17 +29,13 @@ namespace Dialogue
     }
     [XmlRoot(ElementName = "DialogueNode")]
     public class DialogueNode
-    {
-
-        List<DialogueNode> _children;
+    {    
 
         DialogueNode _current;
 
         public DialogueNode()
-        {
-            _children = new List<DialogueNode>();
-            _current = this;
-            _children.Add(this);
+        {    
+            _current = this;     
             ConversationID = "";
             ParticipantName = "";
             EmoteType = "";
@@ -54,13 +59,7 @@ namespace Dialogue
             Participants = "0";
             ConversationSummary = "";
         }
-
-
-        public void AddChild(DialogueNode n)
-        {
-            _children.Add(n);
-        }
-
+        
         public DialogueNode Next {
             get {
                 return null;
