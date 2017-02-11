@@ -55,9 +55,17 @@
       <Project>{9a2aa036-c0da-4c0d-ac8c-c4e3d1050aee}</Project>
       <Name>Abilities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Dialogue\Dialogue.csproj">
+      <Project>{ecc750f4-0b0b-45ed-b547-ec5f2cbcf897}</Project>
+      <Name>Dialogue</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Stats\Stats.csproj">
       <Project>{74c9c7ce-0b6f-4e63-b765-13e177966056}</Project>
       <Name>Stats</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{16460a4d-c2d4-4f75-8f29-6a87a012eb9b}</Project>
+      <Name>Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
