@@ -3,8 +3,8 @@ using Abilities.ConcreteEntities;
 using Abilities;
 using Stats;
 using System;
-using System.Diagnostics;
-using Utilities.Assessment_4;
+using System.Diagnostics;  
+
 
 namespace Integration
 {
@@ -31,12 +31,12 @@ namespace Integration
 
         public TestFactory(TestType t)
         {
+            
             switch(t)
             {
                 case TestType.STATS:
 
-                    onRun += delegate
-                    {
+                    
 
                         Stat[] unit_stats = {
                             new Stat("str", 10),
@@ -58,8 +58,12 @@ namespace Integration
                         stats.AddModifier(4, new Modifier("mult", "int", 2));
                         stats.AddModifier(5, new Modifier("mult", "int", 5));
                         stats.AddModifier(6, new Modifier("mult", "int", -5));
+                     
+             
+                    
+        
 
-                    };
+
                     break;
                 case TestType.ABILITY:
                     onRun += delegate
@@ -113,97 +117,6 @@ namespace Integration
         {
             if(onRun != null)
                 onRun.Invoke();
-        }
-
-        static void TestTrent(string[] arguments)
-        {
-
-
-            foreach(var s in arguments)
-            {
-                if(s == "-d")
-                    Console.WriteLine("START IN DEBUG MODE");
-            }
-
-            FSM<GameState> FSM_gamestate = new FSM<GameState>();
-            FSM_gamestate.AddStateFunction("onEnter", GameState.INIT, (Action)InitEnter);
-            FSM_gamestate.AddStateFunction("onexit", GameState.INIT, (Action)InitExit);
-
-            FSM_gamestate.AddStateFunction("ONENTER", GameState.RUNNING, (Action)RunningEnter);
-            FSM_gamestate.AddStateFunction("onexit", GameState.RUNNING, (Action)RunningExit);
-
-            FSM_gamestate.AddStateFunction("ONENTER", GameState.PAUSED, (Action)PausedEnter);
-            FSM_gamestate.AddStateFunction("onexit", GameState.PAUSED, (Action)PausedExit);
-
-            FSM_gamestate.AddStateFunction("ONENTER", GameState.EXIT, (Action)ExitEnter);
-            FSM_gamestate.AddStateFunction("onexit", GameState.EXIT, (Action)ExitExit);
-
-
-            FSM_gamestate.AddTransition(GameState.INIT, GameState.PAUSED);
-            FSM_gamestate.AddTransition(GameState.PAUSED, GameState.RUNNING);
-            FSM_gamestate.AddTransition(GameState.RUNNING, GameState.PAUSED);
-            FSM_gamestate.AddTransition(GameState.PAUSED, GameState.EXIT);
-            FSM_gamestate.StartMachine(new State(GameState.INIT));
-            Test1(FSM_gamestate);
-            FSM_gamestate.StartMachine(new State(GameState.INIT));
-            Test2(FSM_gamestate);
-        }
-        public static void Test2(FSM<GameState> fsm)
-        {
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
-            fsm.ChangeState(new State((GameState)0));
-            while(sw.ElapsedMilliseconds < (25 * 1000))
-            {
-                for(int i = 1; i < 1000; i++)
-                {
-                    int s = i % 2 + 1;
-                    fsm.ChangeState(new State((GameState)s));
-                }
-            }
-            fsm.ChangeState(new State((GameState)3));
-        }
-        public static void Test1(FSM<GameState> fsm)
-        {
-            //0,1,2,3
-            fsm.ChangeState(new State((GameState)0));
-            fsm.ChangeState(new State((GameState)1));
-            fsm.ChangeState(new State((GameState)2));
-            fsm.ChangeState(new State((GameState)3));
-        }
-
-        public static void InitExit()
-        {
-            System.Console.WriteLine("Exit init handler");
-        }
-        public static void InitEnter()
-        {
-            System.Console.WriteLine("Enter init handler");
-        }
-        public static void RunningExit()
-        {
-            System.Console.WriteLine("Exit running handler");
-        }
-        public static void RunningEnter()
-        {
-            System.Console.WriteLine("Enter running handler");
-        }
-        public static void PausedExit()
-        {
-            System.Console.WriteLine("Exit paused handler");
-        }
-        public static void PausedEnter()
-        {
-            System.Console.WriteLine("Enter paused handler");
-        }
-        public static void ExitEnter()
-        {
-            System.Console.WriteLine("Enter exit handler");
-        }
-        public static void ExitExit()
-        {
-            System.Console.WriteLine("exit exit handler");
-
-        }
+        } 
     }
 }

@@ -1,53 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.Serialization;
+using System;
 
 namespace Stats
 {
+    [DataContract]
     public class Stat
     {
+        public Stat() { }
+
         public Stat(string n, int v)
         {
-            name = n;
-            value = v;
-            base_value = v;
+            Name = n;
+            Value = v;
+            base_value = Value;
+            OnStatAdd += Doit;
         }
 
-        string name;
-        int value;
-        readonly int base_value;
+        [DataMember]
+        public string Name { get; set; }
 
-        public string Name
-        {
-            get
-            {
-                return name;
-            }
-        }
-        public int Value
-        {
-            get
-            {
-                return value;
-            }
-        }
+        [DataMember]
+        public int Value { get; set; }
+
+        [DataMember]
+        private readonly int base_value;
+
+        [IgnoreDataMember]
+        public Action OnStatAdd;
+
+        void Doit() { }
 
         public void Apply(Modifier mod)
         {
             if(mod.type == "add")
-                value += base_value + mod.value;
+                Value += base_value + mod.value;
             if(mod.type == "mult")
-                value += base_value * mod.value / 10;
+                Value += base_value * mod.value / 10;
         }
 
         public void Remove(Modifier mod)
         {
             if(mod.type == "add")
-                value -= base_value + mod.value;
+                Value -= base_value + mod.value;
             if(mod.type == "mult")
-                value -= base_value * mod.value / 10;
+                Value -= base_value * mod.value / 10;
         }
     }
 }

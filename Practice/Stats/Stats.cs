@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
-
+using System.Runtime.Serialization;
 namespace Stats
 {
+    [DataContract]
     public class Stats
     {
         public Stats(Stat[] s)
@@ -51,8 +52,10 @@ namespace Stats
                 RemoveModifier(key);
             modifiers.Clear();
         }
-
+        
+        [DataMember]
         Dictionary<int, Modifier> modifiers;
+        [DataMember]
         Dictionary<string, Stat> stats;
 
     }

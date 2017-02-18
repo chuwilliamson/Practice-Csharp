@@ -5,26 +5,71 @@ namespace Dialogue
     [XmlRoot(ElementName = "DialogueTree")]
     public class DialogueTree
     {
+
         [XmlElement(ElementName = "DialogueRoot")]
         public List<DialogueRoot> DialogueRoots {
             get;
             set;
         }
+        int _index = 0;
+        public DialogueRoot GetRoot(int index)
+        {
+            _index = index;
+            return DialogueRoots[index];
+        }
+        public DialogueRoot Current
+        {
+            get { return DialogueRoots[_index]; }
+        }
+        public DialogueRoot Next
+        {
+            get
+            {
+                _index = _index + 1;
+                if(_index >= DialogueRoots.Count)
+                {
+                    _index = DialogueRoots.Count;
+                }
+                return DialogueRoots[_index];
+            }
+        }
     }
+
     [XmlRoot(ElementName = "DialogueRoot")]
     public class DialogueRoot
     {
         public DialogueRoot()
         {
+            _dialogueIndex = 0;
             DialogueNodes = new List<DialogueNode>();
         }
-        public DialogueRoot(List<DialogueNode> dialogueNodes)
+
+        public DialogueRoot(List<DialogueNode> dialogueNodes) : this()
         {
             DialogueNodes = dialogueNodes;
         }
+
         [XmlElement(ElementName = "DialogueNode")]
         public List<DialogueNode> DialogueNodes {
             get; set;
+        }
+
+        private int _dialogueIndex = 0;
+
+        public DialogueNode Next {
+            get {
+                _dialogueIndex = _dialogueIndex + 1;
+                if(_dialogueIndex >= DialogueNodes.Count)
+                    _dialogueIndex = DialogueNodes.Count - 1;
+                
+                return DialogueNodes[_dialogueIndex];                   
+            }
+        }
+        
+        public DialogueNode Current {
+            get {
+                return DialogueNodes[_dialogueIndex];
+            }
         }
     }
     [XmlRoot(ElementName = "DialogueNode")]
@@ -59,13 +104,13 @@ namespace Dialogue
             Participants = "0";
             ConversationSummary = "";
         }
-        
-        public DialogueNode Next {
-            get {
-                return null;
-            }
-        }
 
+
+        public override string ToString()
+        {
+            return string.Format("{0}, {1}, {2}, {3}", ConversationID, ParticipantName, EmoteType, Line ) ;
+        }
+        
         [XmlElement(ElementName = "ConversationID")]
         public string ConversationID {
             get; set;
