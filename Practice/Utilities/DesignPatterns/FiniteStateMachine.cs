@@ -33,6 +33,7 @@ namespace Utilities
         }
 
     }
+
     [DataContract(Name = "State")]
     public class State
     {
