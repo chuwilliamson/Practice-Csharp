@@ -117,41 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ability_move" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ability_move.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ability_none" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ability_none.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ability_pass" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ability_pass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="focused_ability" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\focused_ability.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="focused_pass" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\focused_pass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="panel_banner" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\panel_banner.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="panel_banner_controller" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\panel_banner_controller.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="panel_hero" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\panel_hero.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="panel_inventory" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\panel_inventory.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="panel_map" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\panel_map.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="panel_monster" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\panel_monster.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="selected_ability" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\selected_ability.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>

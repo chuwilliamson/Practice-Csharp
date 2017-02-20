@@ -2,6 +2,9 @@
 using System.Diagnostics;
 using Utilities;
 using Utilities.Serialization;
+using System.Xml.Serialization;
+using System.Xml;
+using System.IO;
 
 namespace Integration
 {
@@ -29,7 +32,6 @@ namespace Integration
             Unit u = new Unit() { Health = 5, Name = "Max", Resource = 25, };
             XML.Save<Unit>("unit", u);
             Unit b = XML.Load<Unit>("unit");
-
         }
 
         static void Test2()
@@ -46,14 +48,15 @@ namespace Integration
             for(int i = 0; i < 25; i++)
                 fsm.ChangeState(i % 3);
             Json.Save("gamefsminit100", fsm);
-            
+          
         }
 
         static void Main(string[] arguments)
         {
-            Debug.WriteLine(string.Format("valid transition...\n"));
-           
-            Process.Start("Code", savepath + "gamefsminit100.json");
+ 
+
+
+
         }
         static void doit() { }
 

@@ -49,17 +49,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DialogueManager.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Forms\CombatForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\CombatForm.Designer.cs">
+      <DependentUpon>CombatForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DialogueManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Controls\UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Forms\CombatForm.resx">
+      <DependentUpon>CombatForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -69,13 +75,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Properties\DataSources\CombatForms.Properties.Resources.datasource" />
-    <None Include="Properties\DataSources\CombatForms.Properties.Settings.datasource" />
-    <None Include="Properties\DataSources\Dialogue.DialogueNode.datasource" />
-    <None Include="Properties\DataSources\Dialogue.DialogueRoot.datasource" />
-    <None Include="Properties\DataSources\Dialogue.DialogueTree.datasource" />
-    <None Include="Properties\DataSources\DialogueManager.datasource" />
+    <EmbeddedResource Include="Controls\UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -94,6 +98,42 @@
       <Project>{ecc750f4-0b0b-45ed-b547-ec5f2cbcf897}</Project>
       <Name>Dialogue</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\panel_banner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\panel_banner_controller.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\panel_hero.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\panel_inventory.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\panel_map.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\panel_monster.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ability_move.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ability_none.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ability_pass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\focused_ability.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\focused_pass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\selected_ability.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
