@@ -1,11 +1,12 @@
 ﻿using System;
 
-namespace Utilities
+namespace Utilities.Math
 {
    public class Die
     {
         private Die()
         {
+             generate = new Random();
         }
 
         public Die(int s)
@@ -19,7 +20,7 @@ namespace Utilities
         }
 
         private int sides;
-        private Random generate = new Random();
+        private Random generate;
     }
     
 }

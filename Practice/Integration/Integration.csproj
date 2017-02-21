@@ -71,7 +71,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Tests\TestAbility.cs" />
+    <Compile Include="Tests\TestCombat.cs" />
     <Compile Include="Tests\TestFactory.cs" />
+    <Compile Include="Tests\TestStats.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

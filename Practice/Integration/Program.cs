@@ -1,14 +1,14 @@
 ﻿using System.Diagnostics;
 using Combat;
+using Integration.Tests;
+
 namespace Integration
 {
     class Program
     { 
         static void Main(string[] arguments)
         {
-            //TestFactory tf = new TestFactory(TestType.STATS);
-            //tf.Run();
-            Test.Run();            
+            var test1 = new TestCombat();
         } 
     }
 }

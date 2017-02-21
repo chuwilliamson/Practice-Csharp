@@ -2,9 +2,9 @@
 using System.IO;
 using System.Xml.Serialization;
 using System.Runtime.Serialization.Json;
- 
+
 namespace Utilities.Serialization
-{ 
+{
     public static class Json
     {
         public static void Save<T>(string fileName, T data) where T : new()
@@ -12,11 +12,11 @@ namespace Utilities.Serialization
             var serializer = new DataContractJsonSerializer(typeof(T));
             var path = Environment.CurrentDirectory + "../Saves/Json/";
             var outfile = path + fileName + ".json";
-            Directory.CreateDirectory(path);    
-            using(var fs = new FileStream(outfile, FileMode.Create))            
+            Directory.CreateDirectory(path);
+            using(var fs = new FileStream(outfile, FileMode.Create))
                 serializer.WriteObject(fs, data);
-            
-     
+
+
         }
 
         public static T Load<T>(string fileName) where T : new()
@@ -24,9 +24,9 @@ namespace Utilities.Serialization
             var serializer = new DataContractJsonSerializer(typeof(T));
             var path = Environment.CurrentDirectory + "../Saves/Json/";
             var outfile = path + fileName + ".json";
-            using(var fs = new FileStream(outfile, FileMode.Open))            
+            using(var fs = new FileStream(outfile, FileMode.Open))
                 return (T)serializer.ReadObject(fs);
-            
+
 
         }
     }
@@ -37,17 +37,19 @@ namespace Utilities.Serialization
         {
             var serializer = new XmlSerializer(typeof(T));
             string path = Environment.CurrentDirectory + "../Saves/XML/";
-                Directory.CreateDirectory(path);
-            using(var writer = new StreamWriter(path + fileName + ".xml"))
+            var outfile = path + fileName + ".xml";
+            Directory.CreateDirectory(path);
+            using(var writer = new StreamWriter(outfile))
                 serializer.Serialize(writer, data);
         }
 
         public static T Load<T>(string fileName) where T : new()
         {
             var serializer = new XmlSerializer(typeof(T));
-            var path = Environment.CurrentDirectory + "../Saves/XML/" + fileName + ".xml";
-            using(var reader = new StreamReader(path))
-                return (T)serializer.Deserialize(reader);
+            var path = Environment.CurrentDirectory + "../Saves/XML/";
+            var infile = fileName + ".xml";
+            using(var sr = new StreamReader(infile))
+                return (T)serializer.Deserialize(sr);
         }
     }
 }

@@ -31,18 +31,6 @@ namespace Abilities.ConcreteAbilities
             this.Cost = cost;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ThousandNeedles"/> class.
-        /// </summary>
-        /// <param name="damager">
-        /// TODO The damager.
-        /// </param>
-        public ThousandNeedles(IDamager damager)
-        {
-            this.Amount = damager.Amount;
-            this.Cost = damager.Cost;
-            this.Target = damager.Target;
-        }
 
         /// <summary>
         /// Gets or sets the amount.

@@ -43,11 +43,14 @@
   <ItemGroup>
     <Compile Include="Combat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Unit.cs" />
+    <Compile Include="Weapon.cs" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\Abilities\Abilities.csproj">
+      <Project>{9a2aa036-c0da-4c0d-ac8c-c4e3d1050aee}</Project>
+      <Name>Abilities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Stats\Stats.csproj">
       <Project>{74c9c7ce-0b6f-4e63-b765-13e177966056}</Project>
       <Name>Stats</Name>

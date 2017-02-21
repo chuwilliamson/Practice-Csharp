@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
 using System.Runtime.Serialization;
-namespace Stats
+namespace RPGStats
 {
     [DataContract]
     public class Stats
@@ -57,9 +57,9 @@ namespace Stats
             return stats[name];
         }
         [DataMember]
-        Dictionary<int, Modifier> modifiers;
+        private Dictionary<int, Modifier> modifiers;
         [DataMember]
-        Dictionary<string, Stat> stats;
+        private Dictionary<string, Stat> stats;
 
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Runtime.Serialization;
 using System;
 
-namespace Stats
+namespace RPGStats
 {
     [DataContract]
     public class Stat
