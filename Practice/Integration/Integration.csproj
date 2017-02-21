@@ -81,6 +81,10 @@
       <Project>{9a2aa036-c0da-4c0d-ac8c-c4e3d1050aee}</Project>
       <Name>Abilities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Combat\Combat.csproj">
+      <Project>{ade5ed32-1c25-480b-9652-8d1182ce3bd7}</Project>
+      <Name>Combat</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Dialogue\Dialogue.csproj">
       <Project>{ecc750f4-0b0b-45ed-b547-ec5f2cbcf897}</Project>
       <Name>Dialogue</Name>

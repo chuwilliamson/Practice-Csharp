@@ -52,7 +52,10 @@ namespace Stats
                 RemoveModifier(key);
             modifiers.Clear();
         }
-        
+        public Stat GetStat(string name)
+        {
+            return stats[name];
+        }
         [DataMember]
         Dictionary<int, Modifier> modifiers;
         [DataMember]

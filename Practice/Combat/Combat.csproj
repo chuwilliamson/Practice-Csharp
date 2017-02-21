@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{74C9C7CE-0B6F-4E63-B765-13E177966056}</ProjectGuid>
+    <ProjectGuid>{ADE5ED32-1C25-480B-9652-8D1182CE3BD7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RPG</RootNamespace>
-    <AssemblyName>Stats</AssemblyName>
+    <RootNamespace>Combat</RootNamespace>
+    <AssemblyName>Combat</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,12 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Stat.cs" />
-    <Compile Include="Modifier.cs" />
-    <Compile Include="Stats.cs" />
+    <Compile Include="Combat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Stats\Stats.csproj">
+      <Project>{74c9c7ce-0b6f-4e63-b765-13e177966056}</Project>
+      <Name>Stats</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Utilities\Utilities.csproj">
       <Project>{16460a4d-c2d4-4f75-8f29-6a87a012eb9b}</Project>
       <Name>Utilities</Name>
