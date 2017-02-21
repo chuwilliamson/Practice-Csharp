@@ -8,7 +8,7 @@ namespace Stats
     [DataContract]
     public class Stats
     {
-        public Stats(Stat[] s)
+        public Stats(params Stat[] s)
         {
             stats = new Dictionary<string, Stat>();
             modifiers = new Dictionary<int, Modifier>();

@@ -10,7 +10,7 @@ namespace Combat
 {
     [DataContract]
     [KnownType(typeof(Dagger))]
-    [KnownType(typeof(Club))]    
+    [KnownType(typeof(Club))]
     public abstract class Weapon
     {
         protected Random seed;
@@ -18,7 +18,7 @@ namespace Combat
         public string Stat { get; set; }
         public abstract int Roll();
     }
-    [DataContract]    
+    [DataContract]
     public class Dagger : Weapon
     {
         [DataMember]
@@ -53,11 +53,19 @@ namespace Combat
     //chance to hit attack roll
     public class Unit
     {
-     
+
+        public string Name { get; set; }
         public Stats.Stats Stats { get; set; }
         [DataMember]
         public Weapon Weapon { get; set; }
-
+        public override bool Equals(object obj)
+        {
+            return this.GetHashCode() == obj.GetHashCode();
+        }
+        public override int GetHashCode()
+        {
+            return Weapon.GetHashCode() + Name.GetHashCode();
+        }
         public int ArmorCount { get { return 10; } set { } }
         /// <summary>
         /// is a modifier value based on Level starting at 1 and increasing by 1 every 5 levels after the first 5
@@ -90,8 +98,8 @@ namespace Combat
     public class Combat
     {//roll for initiative
      //roll 20d and add dex mod
-        Random InitiativeSeed;
-        Random AttackSeed;
+        private Random InitiativeSeed;
+        private Random AttackSeed;
         public static Combat Instance = new Combat();
         public Combat()
         {
@@ -110,60 +118,99 @@ namespace Combat
         public Tuple<bool, int> RollForAttack(Unit attacker, Unit defender)
         {
             //chance to hit
+         
             int roll = AttackSeed.Next(1, 21);
             Stat s1 = attacker.Stats.GetStat(attacker.Weapon.Stat);
             int s2 = defender.ArmorCount;
             int playerRoll = ((s1.Value - 10) / 2) + roll;
-            int abilityMod = playerRoll - roll;
-            int damage = abilityMod + attacker.Weapon.Roll();
+            int damage = playerRoll - roll + attacker.Weapon.Roll();
             return new Tuple<bool, int>((playerRoll > s2), damage);
         }
+
+        public void StartCombat()
+        {
+            foreach(var unit in Participants)
+                unit.Initiative = RollForInitiative(unit);
+            Participants.Sort((a, b) => -1 * a.Initiative.CompareTo(b.Initiative));
+        }
+        public void Resolve()
+        {
+            Random r = new Random();
+            
+            foreach(var unit in Participants)
+            {
+                var target = Participants[r.Next(0, Participants.Count)];
+                if(unit.Health > 0 )
+                {
+                    while(target == unit || target.Health <= 0)                    
+                        target = Participants[r.Next(0, Participants.Count)];
+                    
+                    var attack = unit.Attack(target);
+
+                    if(attack.Item1)
+                    {
+                        target.TakeDamage(attack.Item2);
+                        Debug.WriteLine("{0} Hit?::{1} {2} with Damage {3}", unit.Name, target.Name, attack.Item1, attack.Item2);
+                    }
+                    else                    
+                        Debug.WriteLine("{0} MISS!!{1} ", unit.Name, target.Name, attack.Item1);
+                    
+                }                
+            }
+        }
+
+        public void ShowCombatLog()
+        {
+            Debug.WriteLine("\n=========COMBAT LOG==============");
+            foreach(var u in Participants)
+            {
+                Debug.WriteLine(string.Format("Name: {0} Health: {1} ", u.Name, u.Health));
+            }
+            Debug.WriteLine("=========COMBAT LOG==============\n");
+        }
+
+        
+
+        public void AddParticipant(params Unit[] u)
+        {
+            if(Participants == null)
+                Participants = new List<Unit>();
+            Participants.AddRange(u);
+        }
+        List<Unit> Participants { get; set; }
     }
     public class Test
     {
         public static void Run()
         {
-            Stat[] unit_stats = {
-                            new Stat("Strength", 15),
-                            new Stat("Charisma", 10),
-                            new Stat("Consitution", 10),
-                            new Stat("Wisdom", 10),
-                            new Stat("Dexterity", 10),
-                            new Stat("Intelligence", 10),
-                        };
+            Stat[] unit_stats = 
+            {
+                new Stat("Strength", 15),
+                new Stat("Charisma", 10),
+                new Stat("Consitution", 10),
+                new Stat("Wisdom", 10),
+                new Stat("Dexterity", 10),
+                new Stat("Intelligence", 10),
+            };
 
             Stats.Stats stats = new Stats.Stats(unit_stats);
+
             Weapon club = new Club() { Stat = "Strength" };
             Weapon dagger = new Dagger() { Name = "dags", Stat = "Dexterity" };
-            Unit u1 = new Unit() { Stats = stats, Level = 1, Weapon = club, Health = 100 };
-            Unit u2 = new Unit() { Stats = stats, Level = 1, Weapon = dagger, Health = 100 };
-            Unit u3 = new Unit() { Stats = stats, Level = 1, Weapon = dagger, Health = 100 };
-            Unit u4 = new Unit() { Stats = stats, Level = 1, Weapon = club, Health = 100 };
+
+            Unit u1 = new Unit() { Name = "Logan", Stats = stats, Level = 1, Weapon = club, Health = 100 };
+            Unit u2 = new Unit() { Name = "Matthew", Stats = stats, Level = 1, Weapon = dagger, Health = 100 };
+            Unit u3 = new Unit() { Name = "Dylan", Stats = stats, Level = 1, Weapon = dagger, Health = 100 };
+            Unit u4 = new Unit() { Name = "BobRoss", Stats = stats, Level = 1, Weapon = club, Health = 1000 };
+            Combat.Instance.AddParticipant(u1, u2, u3, u4);
+            Combat.Instance.StartCombat();
 
 
-            u1.Initiative = Combat.Instance.RollForInitiative(u1);
-            u2.Initiative = Combat.Instance.RollForInitiative(u2);
-            List<Unit> combatParty = new List<Unit>() { u1, u2 };
-            combatParty.Sort((a, b) => -1 *  a.Initiative.CompareTo(b.Initiative));
-            for(int i = 0; i < 20; i++)
+            for(int i = 0; i < 120; i++)
             {
-                var attack = combatParty[0].Attack(combatParty[1]);
-                
-                Debug.WriteLine("Hit?::{0} with Damage {1}", attack.Item1, attack.Item2);
-                if(attack.Item1)
-                    combatParty[0].TakeDamage(attack.Item2);
-                attack = combatParty[1].Attack(combatParty[0]);
-                if(attack.Item1)
-                    combatParty[1].TakeDamage(attack.Item2);
-                
-                Utilities.Serialization.Json.Save("round 1 party " + i.ToString(), combatParty);
-                
-
+                Combat.Instance.Resolve();
+                Combat.Instance.ShowCombatLog();
             }
-
-            //no speed when doing initiative
-
-
         }
     }
 }

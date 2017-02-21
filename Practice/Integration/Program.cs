@@ -8,8 +8,7 @@ namespace Integration
         {
             //TestFactory tf = new TestFactory(TestType.STATS);
             //tf.Run();
-            Test.Run();
-            
+            Test.Run();            
         } 
     }
 }
