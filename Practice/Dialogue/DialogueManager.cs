@@ -1,4 +1,4 @@
-﻿using Dialogue;
+﻿using Dialogue.Xml;
 using System.Xml.Serialization;
 using System.IO;
 using System;
@@ -19,7 +19,7 @@ namespace CombatForms
         }
         public string inFile
         {
-            get { return  "/Saves/NewDialogue.xml"; }
+            get { return "/Saves/NewDialogue.xml"; }
         }
         public static DialogueManager Instance
         {
@@ -28,7 +28,7 @@ namespace CombatForms
                 if(instance == null)
                 {
                     instance = new DialogueManager();
-                    
+
                 }
                 return instance;
             }
@@ -37,7 +37,7 @@ namespace CombatForms
         private static DialogueManager instance;
         public DialogueTree tree
         {
-            get;set;
+            get; set;
         }
 
     }

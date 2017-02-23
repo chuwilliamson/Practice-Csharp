@@ -10,7 +10,7 @@ namespace Utilities.Serialization
         public static void Save<T>(string fileName, T data) where T : new()
         {
             var serializer = new DataContractJsonSerializer(typeof(T));
-            var path = Environment.CurrentDirectory + "../Saves/Json/";
+            var path = Environment.CurrentDirectory + "/Saves/Json/";
             var outfile = path + fileName + ".json";
             Directory.CreateDirectory(path);
             using(var fs = new FileStream(outfile, FileMode.Create))
@@ -22,9 +22,10 @@ namespace Utilities.Serialization
         public static T Load<T>(string fileName) where T : new()
         {
             var serializer = new DataContractJsonSerializer(typeof(T));
-            var path = Environment.CurrentDirectory + "../Saves/Json/";
-            var outfile = path + fileName + ".json";
-            using(var fs = new FileStream(outfile, FileMode.Open))
+            string path = Environment.CurrentDirectory + "/Saves/Json/";
+            var infile = path + fileName + ".json";
+            
+            using(var fs = new FileStream(infile, FileMode.Open))
                 return (T)serializer.ReadObject(fs);
 
 
