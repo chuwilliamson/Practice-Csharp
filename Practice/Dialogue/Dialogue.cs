@@ -1,13 +1,56 @@
 ﻿using System.Collections.Generic;
 using System.Xml.Serialization;
-namespace Dialogue
+using System.Runtime.Serialization;
+namespace Dialogue.Json
+{
+    [DataContract]
+    public class Conversation
+    {
+        [DataMember(Name = "Converstaion")]
+        public List<Dialogue> DialogueConversation { get; set; }
+    }
+    [DataContract]
+    public class Dialogue
+    {
+
+        [DataMember(Name = "Conversation ID")]
+        public string ConversationID { get; set; }
+
+        [DataMember(Name = "Participant Name")]
+        public string ParticipantName { get; set; }
+
+        [DataMember(Name = "Emote Type")]
+        public string EmoteType { get; set; }
+
+        [DataMember(Name = "Side")]
+        public string Side { get; set; }
+
+        [DataMember(Name = "Line")]
+        public string Line { get; set; }
+
+        [DataMember(Name = "Speciality Animation")]
+        public string SpecialityAnimation { get; set; }
+
+        [DataMember(Name = "Specialty Camera")]
+        public string SpecialtyCamera { get; set; }
+
+        [DataMember(Name = "Participants")]
+        public object Participants { get; set; }
+
+        [DataMember(Name = "Conversation Summary")]
+        public string ConversationSummary { get; set; }
+    }
+}
+
+namespace Dialogue.Xml
 {
     [XmlRoot(ElementName = "DialogueTree")]
     public class DialogueTree
     {
 
         [XmlElement(ElementName = "DialogueRoot")]
-        public List<DialogueRoot> DialogueRoots {
+        public List<DialogueRoot> DialogueRoots
+        {
             get;
             set;
         }
@@ -50,37 +93,42 @@ namespace Dialogue
         }
 
         [XmlElement(ElementName = "DialogueNode")]
-        public List<DialogueNode> DialogueNodes {
+        public List<DialogueNode> DialogueNodes
+        {
             get; set;
         }
 
         private int _dialogueIndex = 0;
 
-        public DialogueNode Next {
-            get {
+        public DialogueNode Next
+        {
+            get
+            {
                 _dialogueIndex = _dialogueIndex + 1;
                 if(_dialogueIndex >= DialogueNodes.Count)
                     _dialogueIndex = DialogueNodes.Count - 1;
-                
-                return DialogueNodes[_dialogueIndex];                   
+
+                return DialogueNodes[_dialogueIndex];
             }
         }
-        
-        public DialogueNode Current {
-            get {
+
+        public DialogueNode Current
+        {
+            get
+            {
                 return DialogueNodes[_dialogueIndex];
             }
         }
     }
     [XmlRoot(ElementName = "DialogueNode")]
     public class DialogueNode
-    {    
+    {
 
         DialogueNode _current;
 
         public DialogueNode()
-        {    
-            _current = this;     
+        {
+            _current = this;
             ConversationID = "";
             ParticipantName = "";
             EmoteType = "";
@@ -108,43 +156,52 @@ namespace Dialogue
 
         public override string ToString()
         {
-            return string.Format("{0}, {1}, {2}, {3}", ConversationID, ParticipantName, EmoteType, Line ) ;
+            return string.Format("{0}, {1}, {2}, {3}", ConversationID, ParticipantName, EmoteType, Line);
         }
-        
+
         [XmlElement(ElementName = "ConversationID")]
-        public string ConversationID {
+        public string ConversationID
+        {
             get; set;
         }
         [XmlElement(ElementName = "ParticipantName")]
-        public string ParticipantName {
+        public string ParticipantName
+        {
             get; set;
         }
         [XmlElement(ElementName = "EmoteType")]
-        public string EmoteType {
+        public string EmoteType
+        {
             get; set;
         }
         [XmlElement(ElementName = "Side")]
-        public string Side {
+        public string Side
+        {
             get; set;
         }
         [XmlElement(ElementName = "Line")]
-        public string Line {
+        public string Line
+        {
             get; set;
         }
         [XmlElement(ElementName = "SpecialityAnimation")]
-        public string SpecialityAnimation {
+        public string SpecialityAnimation
+        {
             get; set;
         }
         [XmlElement(ElementName = "SpecialtyCamera")]
-        public string SpecialtyCamera {
+        public string SpecialtyCamera
+        {
             get; set;
         }
         [XmlElement(ElementName = "Participants")]
-        public string Participants {
+        public string Participants
+        {
             get; set;
         }
         [XmlElement(ElementName = "ConversationSummary")]
-        public string ConversationSummary {
+        public string ConversationSummary
+        {
             get; set;
         }
     }
