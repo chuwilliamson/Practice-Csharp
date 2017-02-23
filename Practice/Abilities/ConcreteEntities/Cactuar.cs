@@ -9,9 +9,9 @@
 
 namespace Abilities.ConcreteEntities
 {
-    using System;
-
     using Abilities.ConcreteAbilities;
+    using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// The Cactus man.
@@ -45,6 +45,11 @@ namespace Abilities.ConcreteEntities
         public string Status => "Health::" + this.Health + " Resource::" + this.Resource + " ";
 
         /// <summary>
+        /// Gets or sets the abilities.
+        /// </summary>
+        protected Dictionary<string, IAbility> Abilities { get; set; } = new Dictionary<string, IAbility>();
+
+        /// <summary>
         /// add an ability to this Entities ability set
         /// </summary>
         /// <param name="name">
@@ -67,7 +72,7 @@ namespace Abilities.ConcreteEntities
 
             return true;
         }
-
+     
         /// <summary>
         /// The default cast.
         /// </summary>

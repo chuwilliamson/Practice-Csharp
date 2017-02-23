@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 using RPGStats; 
+using Abilities;
 namespace Combat
 {
     [DataContract]
@@ -9,7 +10,7 @@ namespace Combat
     {
         [DataMember]
         public string Name { get; set; }
-
+        [DataMember]
         public int ArmorCount { get; set; }
         [DataMember]
         public int Health { get; set; }
@@ -21,7 +22,7 @@ namespace Combat
         /// </summary>
         [DataMember]
         public int Initiative { get; set; }
-
+        [DataMember]
         public Stats Stats { get; set; }
 
         [DataMember]

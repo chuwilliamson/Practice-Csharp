@@ -1,7 +1,5 @@
-﻿ 
-using Utilities.Serialization;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Integration.Tests;
+using Utilities.Serialization; 
 namespace Integration
 {
     class Program
@@ -11,7 +9,9 @@ namespace Integration
             var json = Json.Load<Dialogue.Json.Conversation>("Dialogue");
             //var con1 = json.Where(x => x.ConversationID.Contains("001"));
             //var extractedModels = json.Where(m => m.ParticipantName == "Mutt");
-
+            var f = new TestFeedback();
+            f.Run();
+            
         }
     }
 }

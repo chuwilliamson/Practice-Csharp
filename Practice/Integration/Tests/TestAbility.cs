@@ -1,15 +1,14 @@
-﻿using Abilities.ConcreteAbilities;
+﻿using Abilities;
+using Abilities.ConcreteAbilities;
 using Abilities.ConcreteEntities;
-using Abilities;
-using RPGStats;
+using Integration.Interfaces;
 using System;
-using System.Diagnostics;
 
 namespace Integration.Tests
 {
-    public class TestAbility
+    public class TestAbility : ITestable
     {
-        public TestAbility()
+        public void Run()
         {
             var guy = new Cactuar("Cactus guy", 125, 25);
             var girl = new Cactuar("Cactus girl", 80, 100);
@@ -49,6 +48,10 @@ namespace Integration.Tests
             }
 
             Debug.Log("Program Complete..");
+        }
+        public TestAbility()
+        {
+            
         }
     }
 }

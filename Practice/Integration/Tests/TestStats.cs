@@ -6,6 +6,10 @@ namespace Integration.Tests
     {
         public TestStats()
         {
+         
+        }
+        public void Run()
+        {
             Stat[] unit_stats = {
                             new Stat("str", 10),
                             new Stat("int", 10),

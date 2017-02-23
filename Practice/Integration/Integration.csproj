@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\ITestable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -73,7 +74,7 @@
     </Compile>
     <Compile Include="Tests\TestAbility.cs" />
     <Compile Include="Tests\TestCombat.cs" />
-    <Compile Include="Tests\TestFactory.cs" />
+    <Compile Include="Tests\TestFeedback.cs" />
     <Compile Include="Tests\TestStats.cs" />
   </ItemGroup>
   <ItemGroup>

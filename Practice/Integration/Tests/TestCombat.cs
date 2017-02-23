@@ -1,14 +1,21 @@
 ﻿using Combat;
 using RPGStats;
+using Integration.Interfaces;
+using System;
 
 namespace Integration.Tests
 {
-    public class TestCombat
+    public class TestCombat : ITestable
     {
         public TestCombat()
         {
+
+        }
+
+        public void Run()
+        {
             Stat[] unit_stats =
-            {
+               {
                 new Stat("Strength", 15),
                 new Stat("Charisma", 10),
                 new Stat("Consitution", 10),
@@ -35,6 +42,7 @@ namespace Integration.Tests
                 Combat.Combat.Instance.Resolve();
                 Combat.Combat.Instance.ShowCombatLog();
             }
+
         }
     }
 }
