@@ -9,7 +9,7 @@ namespace Integration
             var json = Json.Load<Dialogue.Json.Conversation>("Dialogue");
             //var con1 = json.Where(x => x.ConversationID.Contains("001"));
             //var extractedModels = json.Where(m => m.ParticipantName == "Mutt");
-            var f = new TestFeedback();
+            var f = new TestTrello();
             f.Run();
             
         }
