@@ -50,7 +50,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject />
+    <StartupObject>Integration.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

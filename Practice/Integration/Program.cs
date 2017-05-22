@@ -1,17 +1,27 @@
-﻿ 
-using Utilities.Serialization;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Utilities.Math;
+using System;
+using System.Diagnostics;
 namespace Integration
 {
     class Program
     { 
         static void Main(string[] arguments)
         {
-            var json = Json.Load<Dialogue.Json.Conversation>("Dialogue");
-            //var con1 = json.Where(x => x.ConversationID.Contains("001"));
-            //var extractedModels = json.Where(m => m.ParticipantName == "Mutt");
+            var g = new Grid(5, 5);
+            PrintGrid(g);
+            g = new Grid(2, 4);
+            PrintGrid(g);
+            g = new Grid(4, 2);
+            PrintGrid(g);
 
+        }
+
+        static void PrintGrid(Grid g)
+        {
+            Debug.WriteLine(g.ToString());            
+            Debug.WriteLine(g.GridInfo);
+            Debug.WriteLine("===============");
+            
         }
     }
 }
