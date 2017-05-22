@@ -50,9 +50,6 @@ namespace Abilities
         /// </summary>
         public string Name { get; set; }
 
-        /// <summary>
-        /// Gets or sets the abilities.
-        /// </summary>
-        protected Dictionary<string, IAbility> Abilities { get; set; } = new Dictionary<string, IAbility>();    
+       
     }
 }

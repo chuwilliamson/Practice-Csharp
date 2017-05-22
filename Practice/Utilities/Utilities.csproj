@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DesignPatterns\FiniteStateMachine.cs" />
+    <Compile Include="Feedback\Feedback.cs" />
     <Compile Include="Math\GameMath.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\Serialization.cs" />
